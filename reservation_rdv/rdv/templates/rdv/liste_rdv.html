@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Liste des Rendez-vous</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom du client</th>
+            <th>Date du rendez-vous</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rdv in rdvs %}
+        <tr>
+            <td>{{ rdv.nom }}</td>
+            <td>{{ rdv.date_rdv }}</td>
+            <td>{{ rdv.email }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">Aucun rendez-vous trouvé</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'ajouter_rdv' %}" class="btn btn-primary">Ajouter un rendez-vous</a>
+{% endblock %}
